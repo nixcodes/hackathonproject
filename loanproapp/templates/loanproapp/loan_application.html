@@ -1,10 +1,56 @@
 {% extends 'base.html' %}
 
+{% block title %}Loan Application{% endblock %}
+
 {% block content %}
-  <h2>Loan Application</h2>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
-  </form>
+  <div class="container mx-auto my-8 p-4 bg-white border rounded-md shadow-md">
+    <h2 class="text-2xl font-semibold mb-4">Loan Application</h2>
+    <form method="post" enctype="multipart/form-data" class="max-w-md mx-auto">
+      {% csrf_token %}
+      
+      <!-- Add border to text boxes -->
+      <div class="mb-4">
+        {{ form.first_name.label_tag }}
+        {{ form.first_name }}
+      </div>
+      
+      <div class="mb-4">
+        {{ form.last_name.label_tag }}
+        {{ form.last_name }}
+      </div>
+      
+      <div class="mb-4">
+        {{ form.document.label_tag }}
+        {{ form.document }}
+      </div>
+      
+      <div class="mb-4">
+        {{ form.date_of_birth.label_tag }}
+        {{ form.date_of_birth }}
+      </div>
+      
+      <div class="mb-4">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+      </div>
+      
+      <div class="mb-4">
+        {{ form.monthly_income.label_tag }}
+        {{ form.monthly_income }}
+      </div>
+      
+      <div class="mb-4">
+        {{ form.loan_amount_requested.label_tag }}
+        {{ form.loan_amount_requested }}
+      </div>
+      
+      <div class="mb-4">
+        {{ form.purpose_of_loan.label_tag }}
+        {{ form.purpose_of_loan }}
+      </div>
+
+      <!-- Green submit button -->
+      <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md">Submit</button>
+    </form>
+  </div>
 {% endblock %}

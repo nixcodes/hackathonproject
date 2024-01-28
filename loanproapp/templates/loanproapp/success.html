@@ -1,8 +1,12 @@
+<!-- loanproapp/templates/loanproapp/success.html -->
 {% extends 'base.html' %}
 
-{% block title %}Loan Application Successful{% endblock %}
+{% block title %}Application Successful{% endblock %}
 
 {% block content %}
-  <h2>Loan Application Submitted Successfully!</h2>
-  <!-- Add any success message or additional content here -->
+  <div class="container mx-auto my-8 p-4 bg-white rounded-md shadow-md">
+    <h2 class="text-2xl font-semibold mb-4">Application Successful</h2>
+    <p>Your application with ID {{ applicant.id }} has been successfully submitted.</p>
+    <p>Thank you for applying!</p>
+  </div>
 {% endblock %}
