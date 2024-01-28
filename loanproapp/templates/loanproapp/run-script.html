@@ -1,0 +1,46 @@
+<!-- loanproapp/run_script.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Run Script</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#runScriptButton').click(function() {
+                $.ajax({
+                    url: '{% url "run_app_js" %}',
+                    type: 'POST',
+                    headers: {
+                        "X-CSRFToken": getCookie("csrftoken")
+                    },
+                    success: function(response) {
+                        alert(response.message);
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Error: ' + xhr.responseText);
+                    }
+                });
+            });
+        });
+
+        // Function to retrieve CSRF token from cookie
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+</head>
+<body>
+    <button id="runScriptButton">Run Script</button>
+</body>
+</html>
